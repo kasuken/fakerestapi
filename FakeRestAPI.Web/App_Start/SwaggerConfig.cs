@@ -74,7 +74,7 @@ namespace FakeRestAPI.Web
                         //    });
 
                         // Set this flag to omit descriptions for any actions decorated with the Obsolete attribute
-                        //c.IgnoreObsoleteActions();
+                        c.IgnoreObsoleteActions();
 
                         // Each operation be assigned one or more tags which are then used by consumers for various reasons.
                         // For example, the swagger-ui groups operations according to the first tag of each operation.
@@ -131,7 +131,7 @@ namespace FakeRestAPI.Web
 
                         // Set this flag to omit schema property descriptions for any type properties decorated with the
                         // Obsolete attribute 
-                        //c.IgnoreObsoleteProperties();
+                        c.IgnoreObsoleteProperties();
 
                         // In accordance with the built in JsonSerializer, Swashbuckle will, by default, describe enums as integers.
                         // You can change the serializer behavior by configuring the StringToEnumConverter globally or for a given

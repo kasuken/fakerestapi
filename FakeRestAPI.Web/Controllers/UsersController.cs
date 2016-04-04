@@ -1,4 +1,5 @@
 ﻿using FakeRestAPI.Web.Models;
+using FakeRestAPI.Web.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,30 +11,22 @@ namespace FakeRestAPI.Web.Controllers
 {
     public class UsersController : ApiController
     {
-        List<User> Users = new List<User>();
+        IRepository repository;
 
-        public UsersController()
+        public UsersController(IRepository _repository)
         {
-            for (int i = 1; i < 11; i++)
-            {
-                var user = new User();
-                user.ID = i;
-                user.UserName = string.Format("User {0}", i.ToString());
-                user.Password = string.Format("Password{0}", i.ToString());
-
-                Users.Add(user);
-            }
+            repository = _repository;
         }
 
         // GET api/<controller>
         public IEnumerable<User> Get()
         {
-            return Users;
+            return repository.LoadUsers();
         }
 
         public IHttpActionResult Get(int id)
         {
-            var user = Users.Where(b => b.ID == id).FirstOrDefault();
+            var user = repository.LoadUsers().Where(b => b.ID == id).FirstOrDefault();
 
             if (user == null)
             {

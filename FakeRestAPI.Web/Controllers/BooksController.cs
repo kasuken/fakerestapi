@@ -1,4 +1,5 @@
 ﻿using FakeRestAPI.Web.Models;
+using FakeRestAPI.Web.Repository;
 using NLipsum.Core;
 using System;
 using System.Collections.Generic;
@@ -11,37 +12,23 @@ namespace FakeRestAPI.Web.Controllers
 {
     public class BooksController : ApiController
     {
-        List<Book> Books = new List<Book>();
+        IRepository repository;
 
-        public BooksController()
+        public BooksController(IRepository _repository)
         {
-            var rawText = Lipsums.Decameron;
-            var lipsum = new LipsumGenerator(rawText, false);
-
-            for (int i = 1; i < 201; i++)
-            {
-                var book = new Book();
-                book.ID = i;
-                book.Title = string.Format("Book {0}", i.ToString());
-                book.Description = lipsum.GenerateLipsum(1);
-                book.Excerpt = lipsum.GenerateLipsum(5);
-                book.PublishDate = DateTime.Now.AddDays(-i);
-                book.PageCount = i * 100;
-
-                Books.Add(book);
-            }
+            repository = _repository;
         }   
 
         // GET api/<controller>
         public IEnumerable<Book> Get()
         {
-            return Books;
+            return repository.LoadBooks();
         }
 
         // GET api/<controller>/5
         public IHttpActionResult Get(int id)
         {
-            var book = Books.Where(b => b.ID == id).FirstOrDefault();
+            var book = repository.LoadBooks().Where(b => b.ID == id).FirstOrDefault();
 
             if (book == null)
             {

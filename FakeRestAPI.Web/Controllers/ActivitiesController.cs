@@ -8,11 +8,11 @@ using System.Web.Http;
 
 namespace FakeRestAPI.Web.Controllers
 {
-    public class Activities : ApiController
+    public class ActivitiesController : ApiController
     {
-        List<Activity> _Activities = new List<Activity>();
+        List<Activity> Activities = new List<Activity>();
 
-        public Activities()
+        public ActivitiesController()
         {
             for (int i = 1; i < 31; i++)
             {
@@ -21,20 +21,27 @@ namespace FakeRestAPI.Web.Controllers
                 activity.Title = string.Format("Activity {0}", i.ToString());
                 activity.DueDate = DateTime.Now.AddHours(i);
 
-                _Activities.Add(activity);
+                Activities.Add(activity);
             }
         }
 
-        // GET api/<controller>
+        /// <summary>
+        /// Gets all Activities.
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<Activity> Get()
         {
-            return _Activities;
+            return Activities;
         }
 
-        // GET api/<controller>/5
+        /// <summary>
+        /// Gets the activity with the specified identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         public IHttpActionResult Get(int id)
         {
-            var activity =_Activities.Where(b => b.ID == id).FirstOrDefault();
+            var activity = Activities.Where(b => b.ID == id).FirstOrDefault();
 
             if (activity == null)
             {
