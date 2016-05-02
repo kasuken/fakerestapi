@@ -1,4 +1,5 @@
 ﻿using FakeRestAPI.Web.Models;
+using FakeRestAPI.Web.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,21 +9,17 @@ using System.Web.Http;
 
 namespace FakeRestAPI.Web.Controllers
 {
+    /// <summary>
+    /// The activities operations
+    /// </summary>
+    /// <seealso cref="System.Web.Http.ApiController" />
     public class ActivitiesController : ApiController
     {
-        List<Activity> Activities = new List<Activity>();
+        IRepository repository;
 
-        public ActivitiesController()
+        public ActivitiesController(IRepository _repository)
         {
-            for (int i = 1; i < 31; i++)
-            {
-                var activity = new Activity();
-                activity.ID = i;
-                activity.Title = string.Format("Activity {0}", i.ToString());
-                activity.DueDate = DateTime.Now.AddHours(i);
-
-                Activities.Add(activity);
-            }
+            repository = _repository;
         }
 
         /// <summary>
@@ -31,17 +28,17 @@ namespace FakeRestAPI.Web.Controllers
         /// <returns></returns>
         public IEnumerable<Activity> Get()
         {
-            return Activities;
+            return repository.LoadActivities();
         }
 
         /// <summary>
         /// Gets the activity with the specified identifier.
         /// </summary>
-        /// <param name="id">The identifier.</param>
+        /// <param name="id">The activity identifier.</param>
         /// <returns></returns>
         public IHttpActionResult Get(int id)
         {
-            var activity = Activities.Where(b => b.ID == id).FirstOrDefault();
+            var activity = repository.LoadActivities().Where(b => b.ID == id).FirstOrDefault();
 
             if (activity == null)
             {
@@ -51,19 +48,32 @@ namespace FakeRestAPI.Web.Controllers
             return Ok(activity);
         }
 
-        // POST api/<controller>
+        /// <summary>
+        /// Posts an activity.
+        /// </summary>
+        /// <param name="activity">The activity model.</param>
+        /// <returns></returns>
         public IHttpActionResult Post([FromBody]Activity activity)
         {
             return Ok(activity);
         }
 
-        // PUT api/<controller>/5
+        /// <summary>
+        /// Puts an activity.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="activity">The activity.</param>
+        /// <returns></returns>
         public IHttpActionResult Put(int id, [FromBody]Activity activity)
         {
             return Ok(activity);
         }
 
-        // DELETE api/<controller>/5
+        /// <summary>
+        /// Deletes the specified activity.
+        /// </summary>
+        /// <param name="id">The activity identifier.</param>
+        /// <returns></returns>
         public IHttpActionResult Delete(int id)
         {
             return Ok();

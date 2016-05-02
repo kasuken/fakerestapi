@@ -11,7 +11,7 @@ namespace FakeRestAPI.Web.Repository
     {
         public IEnumerable<Author> LoadAuthors()
         {
-            var Authors = new List<Author>();
+            var authors = new List<Author>();
 
             var authorCounter = 1;
 
@@ -31,16 +31,16 @@ namespace FakeRestAPI.Web.Repository
 
                     authorCounter++;
 
-                    Authors.Add(author);
+                    authors.Add(author);
                 }
             }
 
-            return Authors;
+            return authors;
         }
 
         public IEnumerable<Book> LoadBooks()
         {
-            var Books = new List<Book>();
+            var books = new List<Book>();
 
             var rawText = Lipsums.LoremIpsum;
             var lipsum = new LipsumGenerator(rawText, false);
@@ -55,15 +55,15 @@ namespace FakeRestAPI.Web.Repository
                 book.PublishDate = DateTime.Now.AddDays(-i);
                 book.PageCount = i * 100;
 
-                Books.Add(book);
+                books.Add(book);
             }
 
-            return Books;
+            return books;
         }
 
         public IEnumerable<User> LoadUsers()
         {
-            var Users = new List<User>();
+            var users = new List<User>();
 
             for (int i = 1; i < 11; i++)
             {
@@ -72,15 +72,15 @@ namespace FakeRestAPI.Web.Repository
                 user.UserName = string.Format("User {0}", i.ToString());
                 user.Password = string.Format("Password{0}", i.ToString());
 
-                Users.Add(user);
+                users.Add(user);
             }
 
-            return Users;
+            return users;
         }
 
         public IEnumerable<CoverPhoto> LoadCoverPhotos()
         {
-            var CoverPhotos = new List<CoverPhoto>();
+            var coverPhotos = new List<CoverPhoto>();
 
             for (int i = 1; i < 201; i++)
             {
@@ -89,10 +89,28 @@ namespace FakeRestAPI.Web.Repository
                 cover.IDBook = i;
                 cover.Url = new Uri(string.Format("https://placeholdit.imgix.net/~text?txtsize=33&txt={0}{1}&w=250&h=350", "Book ", i.ToString()));
 
-                CoverPhotos.Add(cover);
+                coverPhotos.Add(cover);
             }
 
-            return CoverPhotos;
+            return coverPhotos;
+        }
+
+        public IEnumerable<Activity> LoadActivities()
+        {
+            var activities = new List<Activity>();
+
+            for (int i = 1; i < 31; i++)
+            {
+                var activity = new Activity();
+                activity.ID = i;
+                activity.Title = string.Format("Activity {0}", i.ToString());
+                activity.DueDate = DateTime.Now.AddHours(i);
+                activity.Completed = i % 2 == 0;
+
+                activities.Add(activity);
+            }
+
+            return activities;
         }
     }
 }

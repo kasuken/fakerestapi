@@ -16,5 +16,7 @@ namespace FakeRestAPI.Web.Repository
         IEnumerable<User> LoadUsers();
 
         IEnumerable<CoverPhoto> LoadCoverPhotos();
+
+        IEnumerable<Activity> LoadActivities();
     }
 }
