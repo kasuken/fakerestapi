@@ -23,3 +23,8 @@ footer {
 .fa-heart {
     color: red;
 }
+
+.jumbotron {
+    padding-top: 30px;
+    padding-bottom: 15px;
+}

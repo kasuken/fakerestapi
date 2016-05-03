@@ -10,7 +10,7 @@ namespace FakeRestAPI.Web.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
+            ViewBag.Title = "Fake Rest API";
 
             return View();
         }
