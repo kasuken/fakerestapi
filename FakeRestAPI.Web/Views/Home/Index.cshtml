@@ -1,7 +1,9 @@
 ﻿<div class="jumbotron">
     <h1>Fake Rest API</h1>
     <p class="lead">Fake Rest API on cloud for testing your application.</p>
+    <script type='text/javascript'>kofiwidget2.init('Buy Me a Coffee', '#009cde', 'A5361LB'); kofiwidget2.draw();</script>
 </div>
+
 <div class="row">
     <div class="col-md-4">
         <h2>Free</h2>
@@ -18,3 +20,85 @@
         <p><a class="btn btn-default" href="http://www.azure.com" target="_blank">Learn more &raquo;</a></p>
     </div>
 </div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Overview</h2>
+        <p>
+            Fake Rest API is a free online REST service that you can use for sample data, tutorials and examples.<br />
+            It's written in ASP.NET and run on Azure.
+        </p>
+    </div>
+
+    <div class="col-md-12">
+        <h2>Source Code</h2>
+        <p>
+            You can view or download the source code from the officiale Github repository: <a href="https://github.com/kasuken/fakerestapi">https://github.com/kasuken/fakerestapi</a>.<br />
+        </p>
+    </div>
+
+    <div class="col-md-12">
+        <h2>Test online</h2>
+        <p>
+            You can test with the button below, or go to <a href="http://fakerestapi.azurewebsites.net/swagger">http://fakerestapi.azurewebsites.net</a>
+
+            <pre>
+var root = 'http://fakerestapi.azurewebsites.net';
+$.ajax({
+    url: root + '/posts/1',
+    method: 'GET'
+}).then(function(data) {
+    alert(data);
+});
+            </pre>
+
+            <button id="runTest">Run</button>
+
+            <br />
+            <br />
+
+            <pre id="result">
+
+            </pre>
+
+        </p>
+    </div>
+
+    <div class="col-md-12">
+        <h2>Resources</h2>
+        <p>
+            <ul>
+                <li><a href="/swagger/ui/index#/Activities">Activities</a></li>
+                <li><a href="/swagger/ui/index#/Authors">Authors</a></li>
+                <li><a href="/swagger/ui/index#/Books">Books</a></li>
+                <li><a href="/swagger/ui/index#/CoverPhotos">CoverPhotos</a></li>
+                <li><a href="/swagger/ui/index#/Users">Users</a></li>
+            </ul>
+        </p>
+    </div>
+
+</div>
+
+@section scripts {
+
+    <script>
+        $('#runTest').click(function () {
+
+            var root = 'http://fakerestapi.azurewebsites.net';
+
+            $.ajax({
+                url: root + '/api/activities/1',
+                method: 'GET'
+            }).then(function (data) {
+                var str = JSON.stringify(data, null, '\t')
+
+                $('#result').html(
+                    str.replace(/\n/g, '<br/>')
+                    .replace(/\\n/g, ' ')
+                    .replace(/\t/g, '&nbsp;&nbsp;')
+                    );
+            });
+        });
+    </script>
+
+}
