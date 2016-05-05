@@ -17,15 +17,22 @@ namespace FakeRestAPI.Web.Controllers
         public BooksController(IRepository _repository)
         {
             repository = _repository;
-        }   
+        }
 
-        // GET api/<controller>
+        /// <summary>
+        /// Gets all books.
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<Book> Get()
         {
             return repository.LoadBooks();
         }
 
-        // GET api/<controller>/5
+        /// <summary>
+        /// Gets the specified book.
+        /// </summary>
+        /// <param name="id">The book identifier.</param>
+        /// <returns></returns>
         public IHttpActionResult Get(int id)
         {
             var book = repository.LoadBooks().Where(b => b.ID == id).FirstOrDefault();
@@ -38,19 +45,32 @@ namespace FakeRestAPI.Web.Controllers
             return Ok(book);
         }
 
-        // POST api/<controller>
+        /// <summary>
+        /// Posts the book.
+        /// </summary>
+        /// <param name="book">The book.</param>
+        /// <returns></returns>
         public IHttpActionResult Post([FromBody]Book book)
         {
             return Ok(book);
         }
 
-        // PUT api/<controller>/5
+        /// <summary>
+        /// Puts the specified book.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="book">The book.</param>
+        /// <returns></returns>
         public IHttpActionResult Put(int id, [FromBody]Book book)
         {
             return Ok(book);
         }
 
-        // DELETE api/<controller>/5
+        /// <summary>
+        /// Deletes the specified book.
+        /// </summary>
+        /// <param name="id">The book identifier.</param>
+        /// <returns></returns>
         public IHttpActionResult Delete(int id)
         {
             return Ok();

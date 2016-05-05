@@ -18,15 +18,22 @@ namespace FakeRestAPI.Web.Controllers
             repository = _repository;
         }
 
-        // GET api/<controller>
+        /// <summary>
+        /// Gets all Authors.
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<Author> Get()
         {
             return repository.LoadAuthors();
         }
 
+        /// <summary>
+        /// Authors for book.
+        /// </summary>
+        /// <param name="idBook">The book identifier.</param>
+        /// <returns></returns>
         [Route("authors/books/{idBook}")]
         [HttpGet]
-        // GET api/<controller>/5
         public IHttpActionResult AuthorsForBook(int idBook)
         {
             var authors = repository.LoadAuthors().Where(b => b.IDBook == idBook).ToList();
@@ -39,7 +46,11 @@ namespace FakeRestAPI.Web.Controllers
             return Ok(authors);
         }
 
-        // GET api/<controller>/5
+        /// <summary>
+        /// Gets the specified author.
+        /// </summary>
+        /// <param name="id">The author identifier.</param>
+        /// <returns></returns>
         public IHttpActionResult Get(int id)
         {
             var author = repository.LoadAuthors().Where(b => b.ID == id).FirstOrDefault();
@@ -52,19 +63,32 @@ namespace FakeRestAPI.Web.Controllers
             return Ok(author);
         }
 
-        // POST api/<controller>
+        /// <summary>
+        /// Posts an author.
+        /// </summary>
+        /// <param name="author">The author.</param>
+        /// <returns></returns>
         public IHttpActionResult Post([FromBody]Author author)
         {
             return Ok(author);
         }
 
-        // PUT api/<controller>/5
+        /// <summary>
+        /// Puts an author.
+        /// </summary>
+        /// <param name="id">The author identifier.</param>
+        /// <param name="author">The author.</param>
+        /// <returns></returns>
         public IHttpActionResult Put(int id, [FromBody]Author author)
         {
             return Ok(author);
         }
 
-        // DELETE api/<controller>/5
+        /// <summary>
+        /// Deletes the specified author.
+        /// </summary>
+        /// <param name="id">The author identifier.</param>
+        /// <returns></returns>
         public IHttpActionResult Delete(int id)
         {
             return Ok();

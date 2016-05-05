@@ -18,15 +18,22 @@ namespace FakeRestAPI.Web.Controllers
             repository = _repository;
         }
 
-        // GET api/<controller>
+        /// <summary>
+        /// Gets all cover photos.
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<CoverPhoto> Get()
         {
             return repository.LoadCoverPhotos();
         }
 
+        /// <summary>
+        /// Covers the cover photos for book.
+        /// </summary>
+        /// <param name="idBook">The book identifier.</param>
+        /// <returns></returns>
         [Route("books/covers/{idBook}")]
         [HttpGet]
-        // GET api/<controller>/5
         public IHttpActionResult CoverPhotosForBook(int idBook)
         {
             var covers = repository.LoadCoverPhotos().Where(b => b.IDBook == idBook).ToList();
@@ -39,7 +46,11 @@ namespace FakeRestAPI.Web.Controllers
             return Ok(covers);
         }
 
-        // GET api/<controller>/5
+        /// <summary>
+        /// Gets the cover photos.
+        /// </summary>
+        /// <param name="id">The cover photo identifier.</param>
+        /// <returns></returns>
         public IHttpActionResult Get(int id)
         {
             var cover = repository.LoadCoverPhotos().Where(b => b.ID == id).FirstOrDefault();
@@ -52,19 +63,32 @@ namespace FakeRestAPI.Web.Controllers
             return Ok(cover);
         }
 
-        // POST api/<controller>
+        /// <summary>
+        /// Posts the cover photo.
+        /// </summary>
+        /// <param name="coverPhoto">The cover photo.</param>
+        /// <returns></returns>
         public IHttpActionResult Post([FromBody]CoverPhoto coverPhoto)
         {
             return Ok(coverPhoto);
         }
 
-        // PUT api/<controller>/5
+        /// <summary>
+        /// Puts the cover photo.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="coverPhoto">The cover photo.</param>
+        /// <returns></returns>
         public IHttpActionResult Put(int id, [FromBody]CoverPhoto coverPhoto)
         {
             return Ok(coverPhoto);
         }
 
-        // DELETE api/<controller>/5
+        /// <summary>
+        /// Deletes the specified cover photo.
+        /// </summary>
+        /// <param name="id">The cover photo identifier.</param>
+        /// <returns></returns>
         public IHttpActionResult Delete(int id)
         {
             return Ok();

@@ -18,12 +18,20 @@ namespace FakeRestAPI.Web.Controllers
             repository = _repository;
         }
 
-        // GET api/<controller>
+        /// <summary>
+        /// Gets all users.
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<User> Get()
         {
             return repository.LoadUsers();
         }
 
+        /// <summary>
+        /// Gets the user.
+        /// </summary>
+        /// <param name="id">The user identifier.</param>
+        /// <returns></returns>
         public IHttpActionResult Get(int id)
         {
             var user = repository.LoadUsers().Where(b => b.ID == id).FirstOrDefault();
@@ -36,19 +44,33 @@ namespace FakeRestAPI.Web.Controllers
             return Ok(user);
         }
 
-        // POST api/<controller>
+        /// <summary>
+        /// Posts the user.
+        /// </summary>
+        /// <param name="user">The user.</param>
+        /// <returns></returns>
         public IHttpActionResult Post([FromBody]User user)
         {
             return Ok(user);
         }
 
-        // PUT api/<controller>/5
+        /// <summary>
+        /// Puts the user.
+        /// </summary>
+        /// <param name="id">The user identifier.</param>
+        /// <param name="user">The user.</param>
+        /// <returns></returns>
         public IHttpActionResult Put(int id, [FromBody]User user)
         {
             return Ok(user);
         }
 
-        // DELETE api/<controller>/5
+
+        /// <summary>
+        /// Deletes the specified user.
+        /// </summary>
+        /// <param name="id">The user identifier.</param>
+        /// <returns></returns>
         public IHttpActionResult Delete(int id)
         {
             return Ok();
