@@ -12,71 +12,70 @@ namespace FakeRESTApi.Web.Controllers
     [Route("api/v1/[controller]")]
     [ApiVersion("1.0")]
     [ApiController]
-    public class ActivitiesController : ControllerBase
+    public class UsersController : ControllerBase
     {
         IRepository repository;
 
-        public ActivitiesController(IRepository _repository)
+        public UsersController(IRepository _repository)
         {
             repository = _repository;
         }
 
         /// <summary>
-        /// Gets all Activities.
+        /// Gets all users.
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public ActionResult<IEnumerable<Activity>> Get()
+        public ActionResult<IEnumerable<User>> Get()
         {
-            return Ok(repository.LoadActivities());
+            return Ok(repository.LoadUsers());
         }
 
         /// <summary>
-        /// Gets the activity with the specified identifier.
+        /// Gets the user.
         /// </summary>
-        /// <param name="id">The activity identifier.</param>
+        /// <param name="id">The user identifier.</param>
         /// <returns></returns>
-        
         [HttpGet("{id}")]
-        public ActionResult<List<Activity>> Get(int id)
+        public ActionResult Get(int id)
         {
-            var activity = repository.LoadActivities().Where(b => b.ID == id).FirstOrDefault();
+            var user = repository.LoadUsers().Where(b => b.ID == id).FirstOrDefault();
 
-            if (activity == null)
+            if (user == null)
             {
                 return NotFound();
             }
 
-            return Ok(activity);
+            return Ok(user);
         }
 
         /// <summary>
-        /// Posts an activity.
+        /// Posts the user.
         /// </summary>
-        /// <param name="activity">The activity model.</param>
+        /// <param name="user">The user.</param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult<Activity> Post([FromBody] Activity activity)
+        public ActionResult Post([FromBody] User user)
         {
-            return Ok(activity);
+            return Ok(user);
         }
 
         /// <summary>
-        /// Puts an activity.
+        /// Puts the user.
         /// </summary>
-        /// <param name="id">The identifier.</param>
-        /// <param name="activity">The activity.</param>
+        /// <param name="id">The user identifier.</param>
+        /// <param name="user">The user.</param>
         /// <returns></returns>
         [HttpPut("{id}")]
-        public ActionResult<Activity> Put(int id, [FromBody] Activity activity)
+        public ActionResult Put(int id, [FromBody] User user)
         {
-            return Ok(activity);
+            return Ok(user);
         }
 
         /// <summary>
-        /// Deletes the specified activity.
+        /// Deletes the specified user.
         /// </summary>
-        /// <param name="id">The activity identifier.</param>
+        /// <param name="id">The user identifier.</param>
         /// <returns></returns>
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)

@@ -26,9 +26,9 @@ namespace FakeRESTApi.Web.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public IEnumerable<Author> Get()
+        public ActionResult<IEnumerable<Author>> Get()
         {
-            return repository.LoadAuthors();
+            return Ok(repository.LoadAuthors());
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace FakeRESTApi.Web.Controllers
         /// <param name="idBook">The book identifier.</param>
         /// <returns></returns>
         [HttpGet("authors/books/{idBook}")]
-        public async Task<ActionResult<List<Author>>> AuthorsForBook(int idBook)
+        public ActionResult<List<Author>> AuthorsForBook(int idBook)
         {
             var authors = repository.LoadAuthors().Where(b => b.IDBook == idBook).ToList();
 
@@ -55,7 +55,7 @@ namespace FakeRESTApi.Web.Controllers
         /// <param name="id">The author identifier.</param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public async Task<ActionResult<Author>> Get(int id)
+        public ActionResult<Author> Get(int id)
         {
             var author = repository.LoadAuthors().Where(b => b.ID == id).FirstOrDefault();
 
@@ -73,7 +73,7 @@ namespace FakeRESTApi.Web.Controllers
         /// <param name="author">The author.</param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<ActionResult<Author>> Post([FromBody] Author author)
+        public ActionResult<Author> Post([FromBody] Author author)
         {
             return Ok(author);
         }
@@ -85,7 +85,7 @@ namespace FakeRESTApi.Web.Controllers
         /// <param name="author">The author.</param>
         /// <returns></returns>
         [HttpPut("{id}")]
-        public async Task<ActionResult<Author>> Put(int id, [FromBody] Author author)
+        public ActionResult<Author> Put(int id, [FromBody] Author author)
         {
             return Ok(author);
         }
@@ -96,7 +96,7 @@ namespace FakeRESTApi.Web.Controllers
         /// <param name="id">The author identifier.</param>
         /// <returns></returns>
         [HttpDelete("{id}")]
-        public async Task<ActionResult> Delete(int id)
+        public ActionResult Delete(int id)
         {
             return Ok();
         }

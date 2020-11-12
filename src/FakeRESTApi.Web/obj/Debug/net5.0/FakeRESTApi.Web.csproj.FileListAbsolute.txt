@@ -79,3 +79,4 @@ C:\_GITHUB_\fakerestapi\src\FakeRESTApi.Web\obj\Debug\net5.0\FakeRESTApi.Web.Mvc
 C:\_GITHUB_\fakerestapi\src\FakeRESTApi.Web\obj\Debug\net5.0\FakeRESTApi.Web.MvcApplicationPartsAssemblyInfo.cache
 C:\_GITHUB_\fakerestapi\src\FakeRESTApi.Web\obj\Debug\net5.0\FakeRESTApi.Web.csproj.CopyComplete
 C:\_GITHUB_\fakerestapi\src\FakeRESTApi.Web\obj\Debug\net5.0\FakeRESTApi.Web.genruntimeconfig.cache
+C:\_GITHUB_\fakerestapi\src\FakeRESTApi.Web\bin\Debug\net5.0\FakeRESTApi.Web.Views.dll
