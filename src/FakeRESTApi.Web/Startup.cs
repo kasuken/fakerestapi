@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using FakeRestAPI.Web.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -29,6 +30,8 @@ namespace FakeRESTApi.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IRepository, FakeRepository>();
+
             services.AddControllers();
 
             services.AddApiVersioning(config =>
@@ -69,6 +72,8 @@ namespace FakeRESTApi.Web
             app.UseSwagger();
             app.UseSwaggerUI(options =>
             {
+                options.RoutePrefix = "";
+
                 foreach (var description in provider.ApiVersionDescriptions)
                 {
                     options.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json", description.GroupName.ToUpperInvariant());
