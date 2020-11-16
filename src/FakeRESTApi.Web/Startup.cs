@@ -1,9 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
 using FakeRestAPI.Web.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -13,7 +7,6 @@ using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
 namespace FakeRESTApi.Web
@@ -31,6 +24,8 @@ namespace FakeRESTApi.Web
         {
             services.AddTransient<IRepository, FakeRepository>();
 
+            services.AddCors();
+
             services.AddControllers();
 
             services.AddApiVersioning(config =>
@@ -44,8 +39,8 @@ namespace FakeRESTApi.Web
             services.AddVersionedApiExplorer(
                options =>
                {
-                    options.GroupNameFormat = "'v'VVV";
-                    options.SubstituteApiVersionInUrl = true;
+                   options.GroupNameFormat = "'v'VVV";
+                   options.SubstituteApiVersionInUrl = true;
                });
 
             services.AddSwaggerGen(c =>
@@ -78,6 +73,10 @@ namespace FakeRESTApi.Web
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors(
+                options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
+            );
 
             app.UseEndpoints(endpoints =>
             {
