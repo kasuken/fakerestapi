@@ -1,26 +1,37 @@
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using FakeRESTAPI.Web;
+using FakeRESTAPI.Web.Models;
+using FakeRESTAPI.Web.Services;
+using Microsoft.OpenApi.Models;
 
-namespace FakeRESTApi.Web
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(options => options.SwaggerDoc("v1", new OpenApiInfo()
 {
-    public class Program
+    Description = "FakeRESTAPI with .NET 6 Minimal API",
+    Title = "FakeRESTAPI",
+    Version = "v1",
+    Contact = new OpenApiContact()
     {
-        public static void Main(string[] args)
-        {
-            CreateHostBuilder(args).Build().Run();
-        }
-
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
+        Name = "Emanuele Bartolesi",
+        Url = new Uri("https://github.com/kasuken")
     }
+}));
+
+builder.Services.AddCors(options => options.AddPolicy("AnyOrigin", o => o.AllowAnyOrigin()));
+
+builder.Services.AddScoped<IRepository, SimpleFakeRepository>();
+
+var app = builder.Build();
+app.UseCors();
+
+app.UseHttpsRedirection();
+app.RegisterActivitiesRoutes();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
+
+app.Run();

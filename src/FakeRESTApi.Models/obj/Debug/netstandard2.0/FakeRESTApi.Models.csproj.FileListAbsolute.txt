@@ -1,9 +1,0 @@
-C:\_GITHUB_\fakerestapi\src\FakeRESTApi.Models\bin\Debug\netstandard2.0\FakeRESTApi.Models.deps.json
-C:\_GITHUB_\fakerestapi\src\FakeRESTApi.Models\bin\Debug\netstandard2.0\FakeRESTApi.Models.dll
-C:\_GITHUB_\fakerestapi\src\FakeRESTApi.Models\bin\Debug\netstandard2.0\FakeRESTApi.Models.pdb
-C:\_GITHUB_\fakerestapi\src\FakeRESTApi.Models\obj\Debug\netstandard2.0\FakeRESTApi.Models.csprojAssemblyReference.cache
-C:\_GITHUB_\fakerestapi\src\FakeRESTApi.Models\obj\Debug\netstandard2.0\FakeRESTApi.Models.AssemblyInfoInputs.cache
-C:\_GITHUB_\fakerestapi\src\FakeRESTApi.Models\obj\Debug\netstandard2.0\FakeRESTApi.Models.AssemblyInfo.cs
-C:\_GITHUB_\fakerestapi\src\FakeRESTApi.Models\obj\Debug\netstandard2.0\FakeRESTApi.Models.csproj.CoreCompileInputs.cache
-C:\_GITHUB_\fakerestapi\src\FakeRESTApi.Models\obj\Debug\netstandard2.0\FakeRESTApi.Models.dll
-C:\_GITHUB_\fakerestapi\src\FakeRESTApi.Models\obj\Debug\netstandard2.0\FakeRESTApi.Models.pdb
