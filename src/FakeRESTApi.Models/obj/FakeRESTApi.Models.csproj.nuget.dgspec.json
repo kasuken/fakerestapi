@@ -1,23 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\_GITHUB_\\fakerestapi\\src\\FakeRESTApi.Models\\FakeRESTApi.Models.csproj": {}
+    "D:\\_GITHUB_\\fakerestapi\\src\\FakeRESTApi.Models\\FakeRESTApi.Models.csproj": {}
   },
   "projects": {
-    "C:\\_GITHUB_\\fakerestapi\\src\\FakeRESTApi.Models\\FakeRESTApi.Models.csproj": {
+    "D:\\_GITHUB_\\fakerestapi\\src\\FakeRESTApi.Models\\FakeRESTApi.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\_GITHUB_\\fakerestapi\\src\\FakeRESTApi.Models\\FakeRESTApi.Models.csproj",
+        "projectUniqueName": "D:\\_GITHUB_\\fakerestapi\\src\\FakeRESTApi.Models\\FakeRESTApi.Models.csproj",
         "projectName": "FakeRESTApi.Models",
-        "projectPath": "C:\\_GITHUB_\\fakerestapi\\src\\FakeRESTApi.Models\\FakeRESTApi.Models.csproj",
-        "packagesPath": "C:\\Users\\EmanueleBartolesi\\.nuget\\packages\\",
-        "outputPath": "C:\\_GITHUB_\\fakerestapi\\src\\FakeRESTApi.Models\\obj\\",
+        "projectPath": "D:\\_GITHUB_\\fakerestapi\\src\\FakeRESTApi.Models\\FakeRESTApi.Models.csproj",
+        "packagesPath": "C:\\Users\\barto\\.nuget\\packages\\",
+        "outputPath": "D:\\_GITHUB_\\fakerestapi\\src\\FakeRESTApi.Models\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\EmanueleBartolesi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\barto\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -60,7 +61,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }
