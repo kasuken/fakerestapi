@@ -2,5 +2,11 @@
   "hostRequirements": {
    "cpus": 8,
    "memory": "8gb",
-   "storage": "32gb"
+    "customizations": {
+  "codespaces": {
+    "openFiles": [
+      "README.md"
+    ]
+  }
+}
 }
