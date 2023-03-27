@@ -38,7 +38,7 @@ namespace FakeRESTApi.Web.Controllers
         /// <returns></returns>
         
         [HttpGet("{id}")]
-        public ActionResult<List<Activity>> Get(int id)
+        public ActionResult<Activity> Get(int id)
         {
             var activity = repository.LoadActivities().Where(b => b.ID == id).FirstOrDefault();
 
